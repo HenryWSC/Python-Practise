@@ -3,7 +3,10 @@ name=input("what is your name?")
 #greet the user to the quiz
 print("hello" ,name, "welcome to this quiz lets get started!")
 #ask question
-input("where is the eifell tower?")
-#tell user awnser 
-print("the awnser is france!")
+awnser=input("where is the eifell tower?")
+#check if awnser is correct then give feedback
+if awnser == "france":
+  print("correct you aren't an idiot")
+else:
+  print("no you idiot! its france!")
 #end quiz
