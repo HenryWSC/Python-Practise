@@ -1,7 +1,9 @@
 #score
 score = 0 
+
 #Ask name and save it
 name=input("what is your name?")
+
 #greet the user to the quiz
 print("hello" ,name, "welcome to this quiz lets get started!")
 #ask question
@@ -14,5 +16,5 @@ if awnser == "france":
 elif awnser == "":
   print("I'm not gonna give you the awnser give me an actual awnser")
 else:
-  print("no you idiot! its france!")
+  print("no you idiot! its france! YOUR SCORE IS STILL", score)
 #end quiz
