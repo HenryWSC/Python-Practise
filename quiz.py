@@ -1,8 +1,22 @@
+#list of questions
+QUESTIONS = [
+    "where is the eiffel tower?",
+    "where is france?",
+    "where is the UK?"]
+OPTIONS = [["france",
+            "around paris",
+            "next to water", "next to france", "next to ireland"]]
+SHORT_OPTOINS = ["a", "b", "c", "d"]
+AWNSERS = [1, 1, 1]
+
 #comments
+import random
 GOOD_COMMENTS = ["you aren't retarted!", "your not a doofus", "you aren't dumb", "you might be barely passable as smart"] 
 BAD_COMMENTS = ["your IQ is room tempurature", "your retarted", "congrats a doofus is you!"]
+
 #score
 score = 0 
+
 #start screen
 play=input("want to play this super awesome amazing quiz?")
 
@@ -33,16 +47,15 @@ while play== "yes":
         
         #check if awnser is correct then give feedback
         if awnser == "france".lower():
-          print("correct you aren't an idiot")
           score += 5
-          print(GOOD_COMMENTS [0])
+          print(random.choice(GOOD_COMMENTS))
           print("Your score is now",score)
           break
         elif awnser == "":
           print("I'm not gonna give you the awnser give me an actual awnser")
         else:
-          print[BAD_COMMENTS[0]]
-          print({"YOUR SCORE IS STILL"}, score)
+          print(random.choice(BAD_COMMENTS))
+          print("YOUR SCORE IS STILL", score)
         question_attempts -= 1
         
     #2nd question intro
@@ -56,11 +69,18 @@ while play== "yes":
     awnser=input ("where is france?").lower()
       #check if awnser is correct then give feedback
     if awnser == "around paris".lower():
-        print("good jon! your score is now", score)
+        (random.choice(GOOD_COMMENTS))
         score += 5
+        
     elif awnser == "":
+          print("wow I guess you don't want a point then")
+          
+    else:
+          print(random.choice(BAD_COMMENTS))
+          print("YOUR SCORE IS STILL", score)
+          question_attempts -= 1
 
-        print("wow I guess you don't want a point then")
+          
 
       #3rd question multiple choice intro
     are_you_ready=input ("ready for the next question?")
@@ -78,7 +98,7 @@ while play== "yes":
 
       #3rd question multiple choice awnser
     if answer == b or answer == "b":
-        print("yes congrats that was hard wasn't it heres 2 points!") 
+        print(random.choice(GOOD_COMMENTS))
         score += 2
 
     else:
