@@ -3,11 +3,10 @@ QUESTION_FORMAT="{}\nA.{} B.{} C.{}"
 QUESTIONS = ["where is the eiffel tower?",
     "where is france?",
     "where is the UK?"]
-OPTIONS = [["France","America","Paris",
-            "around paris",
-            "next to water", "next to france", "next to ireland"]]
+OPTIONS = [["France","America","Paris"],
+            ["around paris", "next to water", "next to france", "next to ireland"]]
 SHORT_OPTOINS = ["a", "b", "c", "d"]
-AWNSERS = [1, 1, 1]
+AWNSERS = [0,0]
 
 #comments
 import random
@@ -42,20 +41,22 @@ while play== "yes":
     question_attempts = tries
     while question_attempts > 0:
     
-    #ask user a question
-     awnser = input(QUESTION_FORMAT.format(QUESTIONS[0], OPTIONS[0][0],
-                                          OPTIONS[0][1], OPTIONS[0][2], OPTIONS[0][3],)).lower()
-    if awnser == OPTIONS [0] [AWNSERS[0]] or awnser == SHORT_OPTOINS [AWNSERS[0]]:
-       print
-    elif awnser in SHORT_OPTOINS or awnser in OPTIONS[0]:
-     print(random.choice(BAD_COMMENTS))
-    else:
-     print("that wasn't an option")
-    
+      #ask user a question
+      awnser = input(QUESTION_FORMAT.format(QUESTIONS[0], OPTIONS[0][0],
+                                            OPTIONS[0][1], OPTIONS[0][2],)).lower()
+      if awnser == OPTIONS [0][AWNSERS[0]].lower() or awnser == SHORT_OPTOINS [AWNSERS[0]].lower():
+        print(random.choice(GOOD_COMMENTS)) 
+        score=+5
+        break
+      elif awnser in SHORT_OPTOINS or awnser in OPTIONS[0]:
+        print(random.choice(BAD_COMMENTS))
+      else:
+        print("that wasn't an option")
+      
        
       
     #end quiz
-     print("congrats {}, completed the quiz!! you have a grand total score of {}".format(name, score) )
+    print("congrats {}, completed the quiz!! you have a grand total score of {}".format(name, score) )
     play = input("wish to play again?").lower()
 
     print("thanks for playing")
