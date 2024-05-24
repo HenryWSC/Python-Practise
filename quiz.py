@@ -1,13 +1,13 @@
 #list of questions
-QUESTIONS = [
-    "where is the eiffel tower?",
+QUESTION_FORMAT="{}\nA.{} B.{} C.{}"
+QUESTIONS = ["where is the eiffel tower?",
     "where is france?",
     "where is the UK?"]
-OPTIONS = [["france",
-            "around paris",
-            "next to water", "next to france", "next to ireland"]]
+OPTIONS = [["France","America","Paris"],
+            ["around paris", "inside europe", "between germany and spain"],
+             ["next to water", "next to france", "next to ireland"]]
 SHORT_OPTOINS = ["a", "b", "c", "d"]
-AWNSERS = [1, 1, 1]
+AWNSERS = [0,0,0]
 
 #comments
 import random
@@ -30,8 +30,8 @@ while True:
         break
     except:
       print("thats not a number")
-    
-while play== "yes":  
+#start of quiz    
+while play == "yes".lower():  
     #Ask name and save it
     name=input("what is your name?")
 
@@ -39,75 +39,35 @@ while play== "yes":
     print("hello",name, "welcome to this quiz lets get started!")
 
     #doing number of attempts per question
-    question_attempts = tries
-    while question_attempts > 0:
-        
-        #ask question
-        awnser=input("where is the eifell tower?").lower()
-        
-        #check if awnser is correct then give feedback
-        if awnser == "france".lower():
-          score += 5
-          print(random.choice(GOOD_COMMENTS))
-          print("Your score is now",score)
+    for x in range(len(QUESTIONS)):
+      question_attempts = tries
+      while question_attempts > 0:
+      
+        #ask user a question
+        awnser = input(QUESTION_FORMAT.format(QUESTIONS[x], OPTIONS[x][0],
+                                              OPTIONS[x][1], OPTIONS[x][2],)).lower()
+        #checks if user got question right
+        if awnser == OPTIONS [x][AWNSERS[x]].lower() or awnser == SHORT_OPTOINS [AWNSERS[x]].lower():
+          print(random.choice(GOOD_COMMENTS)) 
+          score=+5
           break
         elif awnser == "":
-          print("I'm not gonna give you the awnser give me an actual awnser")
+          print("indecisive peasant")
+        elif awnser in SHORT_OPTOINS or awnser in OPTIONS[x]:
+          print(random.choice(BAD_COMMENTS))
         else:
-          print(random.choice(BAD_COMMENTS))
-          print("YOUR SCORE IS STILL", score)
-        question_attempts -= 1
-        
-    #2nd question intro
-    are_you_ready=input ("ready for the next question?")
-    if are_you_ready == "yes":
-        print("good here we go")
-    else:
-        print("oh well gosh diddly darn too bad")
+          print("that wasn't an option")
 
-      #ask 2nd question
-    awnser=input ("where is france?").lower()
-      #check if awnser is correct then give feedback
-    if awnser == "around paris".lower():
-        (random.choice(GOOD_COMMENTS))
-        score += 5
-        
-    elif awnser == "":
-          print("wow I guess you don't want a point then")
-          
-    else:
-          print(random.choice(BAD_COMMENTS))
-          print("YOUR SCORE IS STILL", score)
+
           question_attempts -= 1
-
-          
-
-      #3rd question multiple choice intro
-    are_you_ready=input ("ready for the next question?")
-    if are_you_ready == "yes":
-        print("good here we go")
-    else:
-        print("oh well gosh diddly darn too bad")
-
-      #3rd question multiple choice 
-    question = "where is the UK?"
-    a = "next to france"
-    b = "next to water"
-    c = "next to ireland"
-    answer = input("{}\nA.{} B.{} C.{}".format(question, a, b, c)).lower()
-
-      #3rd question multiple choice awnser
-    if answer == b or answer == "b":
-        print(random.choice(GOOD_COMMENTS))
-        score += 2
-
-    else:
-        print("nuh uh")
-        score -=99999999999999
       
-      #end quiz
+       
+      
+  #end quiz
     print("congrats {}, completed the quiz!! you have a grand total score of {}".format(name, score) )
     play = input("wish to play again?").lower()
-
-    print("thanks for playing")
-    break
+    if play == "yes".lower():
+      print("ok")
+    else:
+      print("thanks for playing")
+      break
