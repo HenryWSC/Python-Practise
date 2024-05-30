@@ -8,7 +8,6 @@ MAX_TURNS = 10
 # ----- FUNCTIONS -----
 
 def intro():
-    print("hello world")
     #Ask name and save it
     name=input("what is your name?")
 
@@ -16,23 +15,9 @@ def intro():
     print("hello",name, "welcome to this quiz lets get started!")
     print("this quiz is about the top 10 best numbers.")
 
-def getPassword():
-    while True:
-        password = input("whats the password?")
-        if password == "trogdor":
-            return
-        else:
-            print("nope. Try again.")
-def getNunber():
-    number = input ("give me a number")
-    return int(number)
-
-number = getNunber()
-print(number)
-
 def getLives():
     while True:
-        lives = input("how many cances do you want?")
+        lives = input("how many chances do you want?")
         try:
             lives = int(lives)
             if lives >= 0:
@@ -42,35 +27,33 @@ def getLives():
         except:
             print("that wasn't a number")
 
-def isCorrect(answer, list):
-    if awnser in list:
+def inList(answer, list):
+    if answer in list:
         return True
     else:
         return False
     
-if inList(answer, MOST_DOWNLOADED_GAMES_AWNSERS):
-    if inList(answer,guesses):
-        print("you have already guessed that")
-    else:
-        print("correct")
-        score += 5
-        guesses.append(answer)
 
 # ----- MAIN CODE -----
+intro()
 lives = getLives()
 score = 0
-intro()
-
 
 while lives > 0:
-    awnser = input("what is one of the top 10 most popular games in 2023\n").lower() 
-
-    if isCorrect(awnser, MOST_DOWNLOADED_GAMES_AWNSERS) == True:
-        print("Correct!")
-        score +=5
+    answer = input("what are the top 10 most downloaded games")
+    if inList(answer,MOST_DOWNLOADED_GAMES_AWNSERS):
+        if inList(answer, guesses):
+            print("you have already guessed that")
+        else:
+            print("correct")
+            score += 5
+            guesses.append(answer)
+            print("you have already guessed {}. your score is {}. you have {} chances remaining".format(len(guesses), score, lives))
     else:
         print("wrong")
         lives -= 1
+        print("you have already guessed {}. Your score is {}. You have {} chances left".format(len(guesses), score, lives))
+
 
 print("game Over. your final score was {}".format(score))
 
